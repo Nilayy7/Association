@@ -1,0 +1,31 @@
+#Loading Book Dataset
+
+install.packages("arules")
+install.packages("arulesViz")
+library(arules)
+library(arulesViz)
+View(book)
+
+#keeping support 2% and confidence 50% ,min to purchase 5 books
+rules <- apriori(book,parameter=list(support=0.02, confidence = 0.5,minlen=5))
+inspect(head(sort(rules, by='lift')))
+head(quality(rules))
+plot(rules,method = 'scatter')
+plot(rules,method = 'group')
+plot(rules,method = 'graph')
+
+#keeping support 4% and confidence 60% , minimum to purchase 4 books
+rules1 <- apriori(as.matrix(book),parameter=list(support=0.04, confidence = 0.6,minlen=4))
+inspect(head(sort(rules1, by='lift')))
+head(quality(rules1))
+plot(rules1,method = 'scatter')
+plot(rules1,method = 'group')
+plot(rules1,method = 'graph')
+
+#keeping support 5% and confidence 75% , minimum to purchase 4 books
+rules2 <- apriori(as.matrix(book),parameter=list(support=0.05, confidence = 0.75,minlen=3))
+inspect(head(sort(rules2, by='lift')))
+head(quality(rules2))
+plot(rules2,method = 'scatter')
+plot(rules2,method = 'group')
+plot(rules2,method = 'graph')
