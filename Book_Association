@@ -7,7 +7,7 @@ library(arulesViz)
 View(book)
 
 #keeping support 2% and confidence 50% ,min to purchase 5 books
-rules <- apriori(book,parameter=list(support=0.02, confidence = 0.5,minlen=5))
+rules <- apriori(as.matrix(book,parameter=list(support=0.02, confidence = 0.5,minlen=5)))
 inspect(head(sort(rules, by='lift')))
 head(quality(rules))
 plot(rules,method = 'scatter')
