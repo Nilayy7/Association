@@ -1,0 +1,22 @@
+
+#Loading The Groceries Dataset
+View(groceries1)
+library(arules)
+library(arulesViz)
+
+groceries<-read.transactions(file.choose(),format = 'basket')
+summary(groceries)
+inspect(groceries[1:10])
+itemFrequency(groceries[,1:10])
+itemFrequencyPlot(groceries,topN=20)
+apriori(groceries)
+grocrules <- apriori(groceries, parameter = list(support=0.002,confidence= 0.05,minlen=2))
+inspect(grocrules)
+v <- sort(grocrules,by="lift")
+inspect(v[1:10])
+
+
+#PLOT THE GRAPH
+plot(grocrules, method = 'scatter')
+plot(grocrules,method = 'graph')
+plot(grocrules,method = 'group')
