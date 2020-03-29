@@ -29,3 +29,7 @@ head(quality(rules2))
 plot(rules2,method = 'scatter')
 plot(rules2,method = 'group')
 plot(rules2,method = 'graph')
+
+
+
+#Inference:- As we increase the confidence the count decreases.
