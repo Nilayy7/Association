@@ -1,0 +1,24 @@
+#Load The data
+View(my_movies)
+install.packages("arules")
+install.packages("arulesViz")
+library(arules)
+library(arulesViz)
+
+#keeping Support 2% and confidence 50%, watched minimum of 2 movies
+rules<-apriori(as.matrix(my_movies[,6:15],parameter=list(support=0.02,confidence=0.5,minlen=2)))
+arules::inspect(rules)
+rules.sorted <-sort(rules,by="lift")
+arules::inspect(rules.sorted)
+plot(rules)
+plot(rules,method = 'graph')
+plot(rules,method = 'group')
+
+#keeping Support 4% and confidence 70% , watched minimum of 3 movies
+rules1<-apriori(as.matrix(my_movies[,6:15],parameter=list(support=0.04,confidence=0.7,minlen=3)))
+arules::inspect(rules1)
+rules.sorted1 <-sort(rules1,by="lift")
+arules::inspect(rules.sorted1)
+plot(rules1)
+plot(rules1,method = 'graph')
+plot(rules1,method = 'group')
