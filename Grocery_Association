@@ -20,3 +20,25 @@ inspect(v[1:10])
 plot(grocrules, method = 'scatter')
 plot(grocrules,method = 'graph')
 plot(grocrules,method = 'group')
+
+#Changing support and confidence levels
+grocrules1 <- apriori(groceries, parameter = list(support=0.004,confidence= 0.06,minlen=3))
+inspect(grocrules1)
+w <- sort(grocrules1,by="confidence")
+inspect(w[1:10])
+
+#PLOT THE GRAPH
+plot(grocrules1, method = 'scatter')
+plot(grocrules1,method = 'graph')
+plot(grocrules1,method = 'group')
+
+#Changing support and confidence levels
+grocrules2 <- apriori(groceries, parameter = list(support=0.005,confidence= 0.08,minlen=2))
+inspect(grocrules2)
+u <- sort(grocrules2,by="confidence")
+inspect(u[1:10])
+
+#PLOT THE GRAPH
+plot(grocrules2, method = 'scatter')
+plot(grocrules2,method = 'graph')
+plot(grocrules2,method = 'group')
