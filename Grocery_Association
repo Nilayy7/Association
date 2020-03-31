@@ -33,7 +33,7 @@ plot(grocrules1,method = 'graph')
 plot(grocrules1,method = 'group')
 
 #Changing support and confidence levels
-grocrules2 <- apriori(groceries, parameter = list(support=0.005,confidence= 0.08,minlen=2))
+grocrules2 <- apriori(groceries, parameter = list(support=0.005,confidence= 0.08,minlen=1))
 inspect(grocrules2)
 u <- sort(grocrules2,by="confidence")
 inspect(u[1:10])
