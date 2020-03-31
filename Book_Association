@@ -30,6 +30,22 @@ plot(rules2,method = 'scatter')
 plot(rules2,method = 'group')
 plot(rules2,method = 'graph')
 
+###keeping support 6% and confidence 80% , minimum to purchase 4 books
+
+rules3 <- apriori(as.matrix(book),parameter=list(support=0.06, confidence = 0.80,minlen=4))
+inspect(head(sort(rules3, by='confidence')))
+head(quality(rules3))
+plot(rules3,method = 'scatter')
+plot(rules3,method = 'group')
+plot(rules3,method = 'graph')
+
+#keeping support 8% and confidence 65%, minimum to purchase 6 books
+rules4 <- apriori(as.matrix(book),parameter=list(support=0.08, confidence = 0.65,minlen=2))
+inspect(head(sort(rules4, by='confidence')))
+head(quality(rules4))
+plot(rules4,method = 'scatter')
+plot(rules4,method = 'group')
+plot(rules4,method = 'graph')
 
 
 #Inference:- As we increase the confidence the count decreases.
